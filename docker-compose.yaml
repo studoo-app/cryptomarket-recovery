@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  db:
+    container_name: cyber-eval-s2-db
+    image: mariadb:10.5.8
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./var/db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app_db
+      TZ: Europe/Paris
+    networks:
+      - network
+  phpmyadmin:
+    container_name: cyber-eval-s2-pma
+    image: phpmyadmin
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+    networks:
+      - network
+volumes:
+  caddy_data:
+  caddy_config:
+networks:
+  network:
