@@ -24,6 +24,12 @@ class Message
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Paris'));
+    }
+
     public function getId(): ?int
     {
         return $this->id;

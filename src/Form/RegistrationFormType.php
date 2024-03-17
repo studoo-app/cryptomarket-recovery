@@ -40,6 +40,9 @@ class RegistrationFormType extends AbstractType
             ->add('walletHashId', TextType::class, [
                 'mapped' => false,
                 'label' => 'Wallet Id',
+                'attr' => [
+                    'placeholder' => 'Enter your wallet sha256 hash id',
+                ],
                 'required' => true,
                 'constraints' => [
                     new NotBlank([

@@ -12,8 +12,8 @@
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
+        {{ form_row(registrationForm.walletHashId) }}
 
-
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn btn-primary">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
