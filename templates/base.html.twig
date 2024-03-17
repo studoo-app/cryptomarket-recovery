@@ -13,7 +13,54 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    {%  if app.user %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="">CryptoMarket</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Currencies</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Messages</a>
+                            </li>
+                        {%  endif %}
+                        {% if is_granted('ROLE_USER') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Buy coins</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">My wallet</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Support</a>
+                            </li>
+                        {%  endif %}
+                    </ul>
+                </div>
+                {%  if app.user %}
+                    <div class="ml-auto">
+                        <a href="{{ path('app_logout') }}" class="btn btn-outline-danger">Déconnexion ({{ app.user.email }})</a>
+                    </div>
+                {% endif %}
+            </div>
+
+        </nav>
+    {% endif %}
+    <body class="bg-dark text-white">
+        <div class="container ">
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>
