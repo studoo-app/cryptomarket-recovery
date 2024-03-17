@@ -51,7 +51,8 @@ class AppFixtures extends Fixture
 
     private function loadUsers(ObjectManager $manager, Generator $faker): void
     {
-        $this->createUser($manager, 'admin@cryptomarkert.dev', 'admin', true,$faker);
+        $this->createUser($manager, 'admin@cryptomarket.dev', 'admin', true,$faker);
+        $this->createUser($manager, 'user@cryptomarket.dev', 'user', false,$faker);
 
         for ($i = 0; $i < 50; $i++) {
             $this->createUser($manager, $faker->email, $faker->lexify('?????????'), false,$faker);

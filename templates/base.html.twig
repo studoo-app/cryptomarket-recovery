@@ -24,27 +24,24 @@
                     <ul class="navbar-nav">
                         {% if is_granted('ROLE_ADMIN') %}
                             <li class="nav-item">
-                                <a class="nav-link" href="">Dashboard</a>
+                                <a class="nav-link" href="{{ path("app_admin_dashboard") }}">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Currencies</a>
+                                <a class="nav-link" href="{{ path("app_admin_currency_index") }}">Currencies</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Messages</a>
+                                <a class="nav-link" href="{{ path("app_admin_message") }}">Messages</a>
                             </li>
                         {%  endif %}
                         {% if is_granted('ROLE_USER') %}
                             <li class="nav-item">
-                                <a class="nav-link" href="">Dashboard</a>
+                                <a class="nav-link" href="{{ path("app_dashboard") }}">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Buy coins</a>
+                                <a class="nav-link" href="{{ path("app_explore") }}">Explore Market</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">My wallet</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Support</a>
+                                <a class="nav-link" href="{{ path("app_support") }}">Support</a>
                             </li>
                         {%  endif %}
                     </ul>
