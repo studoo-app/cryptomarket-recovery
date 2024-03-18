@@ -26,9 +26,9 @@
         </tbody>
     </table>
 
-    <a class="btn btn-danger" href="{{ path('app_admin_currency_index') }}">back to list</a>
+    <a class="btn btn-outline-danger" href="{{ path('app_admin_currency_index') }}">back to list</a>
 
-    <a class="btn btn-primary" href="{{ path('app_admin_currency_edit', {'id': currency.id}) }}">edit</a>
+    <a class="btn btn-outline-primary" href="{{ path('app_admin_currency_edit', {'id': currency.id}) }}">edit</a>
 
     {{ include('admin/currency/_delete_form.html.twig') }}
 {% endblock %}

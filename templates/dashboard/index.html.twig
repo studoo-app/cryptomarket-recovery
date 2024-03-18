@@ -9,7 +9,7 @@
             <div class="card bg-dark border-primary text-white">
                 <div class="card-body">
                     <h3 class="card-title">My Wallet global capitalization</h3>
-                    <p class="card-text display-6">{{ wallet.capital }} $</p>
+                    <p class="card-text display-6">{{ wallet.capital|number_format(2) }} $</p>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
 {#                                    <td>{{ asset.currency.short_name }}</td>#}
                                     <td>{{ asset.currency.value }} $</td>
                                     <td>{{ asset.volume }} </td>
-                                    <td>{{ asset.getValorization }} $</td>
+                                    <td>{{ asset.getValorization|number_format(2) }} $</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

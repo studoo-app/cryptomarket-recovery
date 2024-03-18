@@ -14,7 +14,7 @@ class MessageController extends AbstractController
     {
         return $this->render('admin/message/index.html.twig', [
             'controller_name' => 'MessageController',
-            'messages' => $repository->findAll(),
+            'messages' => $repository->findAllOrderByDateDesc()
         ]);
     }
 }

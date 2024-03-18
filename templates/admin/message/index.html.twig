@@ -3,30 +3,20 @@
     {% block title %}{{ parent() }} - Messages Inbox{% endblock %}
 
     {% block body %}
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table table-dark table-striped">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">User</th>
-                            <th scope="col">Message</th>
-                        </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                        {% for mes in messages %}
-                            <tr>
-                                <th scope="row">{{ mes.id }}</th>
-                                <td>{{ mes.createdAt | date("d/m/y H:i") }}</td>
-                                <td>{{ mes.user.email }}</td>
-                                <td>{{ mes.content | raw }} </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+        <h1>Messages Inbox</h1>
+        <hr>
+        <div class="row row-cols-1 row-cols-md-1 g-4 mt-5">
+            {% for mes in messages %}
+                <div class="col">
+                    <div class="card bg-dark border-primary text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ mes.user.email }}</h5>
+                            <h6 class="card-subtitle mb-2 ">{{ mes.createdAt | date("d/m/y H:i") }}</h6>
+                            <hr>
+                            <p class="card-text">{{ mes.content | raw }}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
     {% endblock %}

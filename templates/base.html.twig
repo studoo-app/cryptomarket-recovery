@@ -48,7 +48,7 @@
                 </div>
                 {%  if app.user %}
                     <div class="ml-auto">
-                        <a href="{{ path('app_logout') }}" class="btn btn-outline-danger">Déconnexion ({{ app.user.email }})</a>
+                        <a href="{{ path('app_logout') }}" class="btn btn-outline-danger">Logout ({{ app.user.email }})</a>
                     </div>
                 {% endif %}
             </div>
