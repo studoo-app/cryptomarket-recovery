@@ -4,13 +4,13 @@
 
 {% block body %}
     <h1>Currency index</h1>
-
-    <table class="table">
+    <a class="btn btn-primary" href="{{ path('app_admin_currency_new') }}">Create new</a>
+    <table class="table table-dark">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Short_name</th>
+                <th>Short name</th>
                 <th>Value</th>
                 <th>actions</th>
             </tr>
@@ -21,10 +21,10 @@
                 <td>{{ currency.id }}</td>
                 <td>{{ currency.name }}</td>
                 <td>{{ currency.shortName }}</td>
-                <td>{{ currency.value }}</td>
+                <td>{{ currency.value }} $</td>
                 <td>
-                    <a href="{{ path('app_admin_currency_show', {'id': currency.id}) }}">show</a>
-                    <a href="{{ path('app_admin_currency_edit', {'id': currency.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('app_admin_currency_show', {'id': currency.id}) }}">show</a>
+                    <a class="btn btn-primary" href="{{ path('app_admin_currency_edit', {'id': currency.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_currency_new') }}">Create new</a>
+
 {% endblock %}
