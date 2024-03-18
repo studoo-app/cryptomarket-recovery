@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Message{% endblock %}
+{% block title %}{{ parent() }} - Contact support{% endblock %}
 
 {% block body %}
-    <h1>New Support Request</h1>
+    <h1>Send Message to the support</h1>
 
     {{ include('support/_form.html.twig') }}
 

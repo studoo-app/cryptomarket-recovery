@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CurrencyRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CurrencyRepository::class)]
 class Currency
@@ -15,12 +16,18 @@ class Currency
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private ?string $short_name = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 21, scale: 16)]
+    #[Assert\NotEqualTo(value: 0)]
+    #[Assert\NotNull]
     private ?string $value = null;
 
     public function getId(): ?int

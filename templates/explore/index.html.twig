@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ExploreController!{% endblock %}
+{% block title %}{{ parent() }} - Explore Market{% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="col-md-12">
             {{ form_start(form) }}
                 {{ form_widget(form) }}
-
-{#                <button type="submit" class="btn btn-primary">Submit</button>#}
             {{ form_end(form) }}
         </div>
         <hr>
@@ -17,7 +15,6 @@
                 <table class="table table-dark table-striped">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Tag</th>
                         <th scope="col">Value</th>
@@ -26,7 +23,6 @@
                     <tbody class="table-group-divider">
                     {% for cur in currencies %}
                     <tr>
-                        <th scope="row">{{ cur.id }}</th>
                         <td>{{ cur.name }}</td>
                         <td>{{ cur.short_name }}</td>
                         <td>{{ cur.value }} $</td>

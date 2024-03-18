@@ -1,11 +1,21 @@
 version: "3.9"
 services:
+  app:
+    container_name: cyber-eval-s2-app
+    build: .
+    ports:
+      - "8001:443"
+    tty: true
+    volumes:
+      - ./:/app
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - network
   db:
     container_name: cyber-eval-s2-db
     image: mariadb:10.5.8
     restart: always
-    ports:
-      - "3306:3306"
     volumes:
       - ./var/db-data:/var/lib/mysql
     environment:
