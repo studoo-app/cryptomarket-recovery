@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Wallet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,20 +22,41 @@ class WalletRepository extends ServiceEntityRepository
         parent::__construct($registry, Wallet::class);
     }
 
-    //    /**
-    //     * @return Wallet[] Returns an array of Wallet objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('w')
-    //            ->andWhere('w.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('w.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+
+        public function getAverageDetainedAssets()
+        {
+            $rsm = new ResultSetMapping();
+            $rsm->addScalarResult('moyenne_nbAssets', 'avg_assets_nb');
+            return $this->getEntityManager()
+                ->createNativeQuery('
+                    SELECT CEILING(AVG(nbAssets)) AS moyenne_nbAssets 
+                    FROM (
+                        SELECT wallet.id, COUNT(asset.id) AS nbAssets 
+                        FROM asset 
+                        INNER JOIN wallet ON wallet.id = asset.wallet_id 
+                        GROUP BY asset.wallet_id
+                    ) AS subquery;
+                ', $rsm)
+                ->getResult();
+        }
+
+    public function getAverageCapital(): array
+    {
+        $rsm = new ResultSetMapping();
+        $rsm->addScalarResult('moyenne_capital', 'avg_capital');
+        return $this->getEntityManager()
+            ->createNativeQuery('
+                    SELECT CEILING(AVG(somme)) AS moyenne_capital
+                    FROM (
+                        SELECT wallet.id,sum(asset.volume * currency.value) as somme FROM asset
+                        INNER JOIN wallet ON wallet.id = asset.wallet_id 
+                        INNER JOIN currency ON currency.id = asset.currency_id 
+                        GROUP BY asset.wallet_id
+                    ) as subquery;
+                ', $rsm)
+            ->getResult();
+
+    }
 
     //    public function findOneBySomeField($value): ?Wallet
     //    {
