@@ -28,6 +28,7 @@ class Wallet
     {
         $this->assets = new ArrayCollection();
         $this->hashId = $hashId;
+        //$this->capital = $this->getCapital();
     }
 
     public function getId(): ?int
@@ -92,5 +93,14 @@ class Wallet
         $this->hashId = $hashId;
 
         return $this;
+    }
+
+    public function getCapital(): float
+    {
+        $capital = 0;
+        foreach ($this->assets as $asset) {
+            $capital += $asset->getValorization();
+        }
+        return $capital;
     }
 }

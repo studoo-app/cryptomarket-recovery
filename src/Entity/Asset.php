@@ -64,4 +64,9 @@ class Asset
 
         return $this;
     }
+
+    public function getValorization(): ?float
+    {
+        return $this->currency->getValue() * $this->volume;
+    }
 }
