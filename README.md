@@ -1,6 +1,6 @@
 ![separe](https://github.com/studoo-app/.github/blob/main/profile/studoo-banner-logo.png)
-# CryptoMarket App fixing
-[![Version](https://img.shields.io/badge/Version-1.0.0-blue)]()
+# CryptoMarket Audit et actions de maintenance curative
+[![Version](https://img.shields.io/badge/Version-1.0.2-blue)]()
 
 ## Contexte
 Cryptomarket une entreprise qui a développé une application de suivi de portefeuille de cryptomonnaies. 
@@ -38,5 +38,10 @@ Pour vous faciliter la navigation dans l'application, vous disposez aussi de 2 c
 
 ### Installation des dépendances
 ```bash
-    docker-compose exec -it cryptomarket composer install
+    docker-compose exec -it cryptomarket-app composer install
+```
+
+### Déploiement des fixtures
+```bash
+  docker-compose exec -it cryptomarket-app php bin/console d:f:l
 ```
