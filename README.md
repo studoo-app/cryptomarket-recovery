@@ -20,7 +20,7 @@ Pour vous faciliter la navigation dans l'application, vous disposez aussi de 2 c
 
 - Réparer les dommages de l'attaque ransomware et rétablir le site
 - Vous en profiterez pour auditer le code et appliquerez les modifications necéssaires pour le sécuriser
-- Vous rédigerez un compte rendu sous format "cr-<prenom>-<nom>.md" où vous décrirez:
+- Vous rédigerez un compte rendu sous format "cr-prenom-nom.md" où vous décrirez:
   - La nature de la faille relevée (définition technique)
   - les dommages potentiels
   - les mesures correctives et/ou curatives que vous avez apportées
