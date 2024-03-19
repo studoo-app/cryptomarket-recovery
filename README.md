@@ -38,10 +38,15 @@ Pour vous faciliter la navigation dans l'application, vous disposez aussi de 2 c
 
 ### Installation des dépendances
 ```bash
-    docker-compose exec -it cryptomarket-app composer install
+    docker exec -it cryptomarket-app composer install
+```
+
+### Migration de la base de données
+```bash
+    docker exec -it cryptomarket-app php bin/console d:m:m
 ```
 
 ### Déploiement des fixtures
 ```bash
-  docker-compose exec -it cryptomarket-app php bin/console d:f:l
+  docker exec -it cryptomarket-app php bin/console d:f:l
 ```
