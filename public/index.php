@@ -1,9 +1,1 @@
-<?php
-
-use App\Kernel;
-
-require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
-
-return function (array $context) {
-    return new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
-};
+PD9waHAKCnVzZSBBcHBcS2VybmVsOwoKcmVxdWlyZV9vbmNlIGRpcm5hbWUoX19ESVJfXykuJy92ZW5kb3IvYXV0b2xvYWRfcnVudGltZS5waHAnOwoKcmV0dXJuIGZ1bmN0aW9uIChhcnJheSAkY29udGV4dCkgewogICAgcmV0dXJuIG5ldyBLZXJuZWwoJGNvbnRleHRbJ0FQUF9FTlYnXSwgKGJvb2wpICRjb250ZXh0WydBUFBfREVCVUcnXSk7Cn07Cg==

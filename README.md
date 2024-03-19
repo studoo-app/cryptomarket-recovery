@@ -3,13 +3,40 @@
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)]()
 
 ## Contexte
+Cryptomarket une entreprise qui a développé une application de suivi de portefeuille de cryptomonnaies. 
+Cette application permet de suivre l'évolution des cours des cryptomonnaies et de visualiser la valeur d'un portefeuille de cryptomonnaies.
+
+A la suite d'une attaque de type ransomware relativement basique, le site a été corrompu et ne fonctionne plus.
+
+Vous avez été embauché par l'entreprise pour réparer le site et le remettre en ligne. 
+Pour ce faire, vous disposez du code source de l'application, d'une fraction de la base de production 
+ainsi que d'un environnement de développement dockerisé.
+
+Pour vous faciliter la navigation dans l'application, vous disposez aussi de 2 comptes utilisateurs :
+- admin@cryptomarket.dev / admin
+- user@cryptomarket.Dev / user
 
 ## Objectifs
 
+- Réparer les dommages de l'attaque ransomware et rétablir le site
+- Vous en profiterez pour auditer le code et appliquerez les modifications necéssaires pour le sécuriser
+- Vous rédigerez un compte rendu sous format "cr-<prenom>-<nom>.md" où vous décrirez:
+  - La nature de la faille relevée (définition technique)
+  - les dommages potentiels
+  - les mesures correctives et/ou curatives que vous avez apportées
+
 ## Installation
-Installation des dépendances, démarrage des conteneurs et du serveur web
+### Création du fichier d'environnement
 ```bash
-    composer install
+    cp .env.example .env
+```
+
+### Démarrage des conteneurs docker
+```bash
     docker-compose up -d
-    symfony serve -d
+```
+
+### Installation des dépendances
+```bash
+    docker-compose exec -it cryptomarket composer install
 ```
