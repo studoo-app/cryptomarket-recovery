@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Dashboard{% endblock %}
+
+{% block body %}
+    <div class="row mt-5">
+
+        <div class="col-12">
+            <div class="card bg-dark border-primary text-white">
+                <div class="card-body">
+                    <h3 class="card-title">My Wallet global capitalization</h3>
+                    <p class="card-text display-6">{{ wallet.capital|number_format(2) }} $</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mt-3">
+            <div class="card bg-dark border-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Valorization by asset</h5>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+{#                                <th scope="col">Tag</th>#}
+                                <th scope="col">Value</th>
+                                <th scope="col">Volume</th>
+                                <th scope="col">Valorization</th>
+                            </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                            {% for asset in wallet.assets %}
+                                <tr>
+                                    <td>{{ asset.currency.name }}</td>
+{#                                    <td>{{ asset.currency.short_name }}</td>#}
+                                    <td>{{ asset.currency.value }} $</td>
+                                    <td>{{ asset.volume }} </td>
+                                    <td>{{ asset.getValorization|number_format(2) }} $</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

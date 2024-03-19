@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}{{ parent() }} - Messages Inbox{% endblock %}
+
+    {% block body %}
+        <h1>Messages Inbox</h1>
+        <hr>
+        <div class="row row-cols-1 row-cols-md-1 g-4 mt-5">
+            {% for mes in messages %}
+                <div class="col">
+                    <div class="card bg-dark border-primary text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ mes.user.email }}</h5>
+                            <h6 class="card-subtitle mb-2 ">{{ mes.createdAt | date("d/m/y H:i") }}</h6>
+                            <hr>
+                            <p class="card-text">{{ mes.content | raw }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}

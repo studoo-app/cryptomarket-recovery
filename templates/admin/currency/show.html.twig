@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Currency{% endblock %}
+
+{% block body %}
+    <h1>Currency</h1>
+
+    <table class="table table-dark">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ currency.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ currency.name }}</td>
+            </tr>
+            <tr>
+                <th>Short_name</th>
+                <td>{{ currency.shortName }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ currency.value }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-outline-danger" href="{{ path('app_admin_currency_index') }}">back to list</a>
+
+    <a class="btn btn-outline-primary" href="{{ path('app_admin_currency_edit', {'id': currency.id}) }}">edit</a>
+
+    {{ include('admin/currency/_delete_form.html.twig') }}
+{% endblock %}
