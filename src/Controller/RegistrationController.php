@@ -37,6 +37,8 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $user->setRoles(['ROLE_USER']);
+
             $user->setWallet(new Wallet($form->get('walletHashId')->getData()));
 
             $entityManager->persist($user);
