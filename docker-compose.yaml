@@ -1,17 +1,22 @@
 version: "3.9"
 services:
   app:
-    container_name: cryptomarket-app
-    build: .
+    container_name: cryptomarket-web
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-apache2
     ports:
-      - "8001:443"
-    tty: true
+      - "8000:80"
     volumes:
-      - ./:/app
-      - caddy_data:/data
-      - caddy_config:/config
+      - .:/var/www
+      - ./docker/conf:/etc/apache2/sites-enabled
+    depends_on:
+      - db
+    links:
+      - db
+    restart: always
     networks:
-      - network
+        - network
   db:
     container_name: cryptomarket-db
     image: mariadb:10.5.8
